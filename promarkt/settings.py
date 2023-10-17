@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'promarkt.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "Mercato",
-        "USER": "postgres",
-        "PASSWORD": "4520",
-        "HOST": "127.0.0.1",
-        "PORT": "5433",
+        "NAME": "tedmarket",
+        "USER": "tedmarket_user",
+        "PASSWORD": "rw5XqeMYfA4lAQc93kt7CctaKiZaAwd1",
+        "HOST": "dpg-ckmtifav7m0s738q5vd0-a.oregon-postgres.render.com",
+        "PORT": "5432",
     }
 }
 
