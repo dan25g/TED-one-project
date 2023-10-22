@@ -45,6 +45,7 @@ class Empleado(models.Model):
     empsexo = models.CharField()
     fechasalida = models.DateField(blank=True, null=True)
     sucursal = models.ForeignKey(Sucursal, models.DO_NOTHING, blank=True, null=True)
+    bono = models.DecimalField(max_digits=12, decimal_places=2)
 
     class Meta:
         managed = False
@@ -83,7 +84,7 @@ class Producto(models.Model):
     seccion = models.CharField()
     peso = models.DecimalField(max_digits=10, decimal_places=2)
     precioventa = models.DecimalField(max_digits=10, decimal_places=2)
-    costocompra = models.DecimalField(max_digits=10, decimal_places=2)
+    costoind = models.DecimalField(max_digits=10, decimal_places=2)
     iva = models.DecimalField(max_digits=10, decimal_places=2)
 
     class Meta:
@@ -174,5 +175,29 @@ class Stocktienda(models.Model):
         db_table = 'stocktienda'
 
 
+class Gastos(models.Model):
+    gasid = models.AutoField(primary_key=True)
+    suc = models.ForeignKey(Sucursal, models.DO_NOTHING, blank=True, null=True)
+    alquiler = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    servicioagua = models.DecimalField(max_digits=10, decimal_places=2)
+    servicioluz = models.DecimalField(max_digits=10, decimal_places=2)
+    suministrolim = models.DecimalField(max_digits=10, decimal_places=2)
+    mantenimientoelec = models.DecimalField(max_digits=10, decimal_places=2)
+    gastomulta = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
 
+    class Meta:
+        managed = False
+        db_table = 'gastos'
 
+class Pedidoprooveedor(models.Model):
+    pedid = models.AutoField(primary_key=True)
+    prov = models.ForeignKey(Proveedor, models.DO_NOTHING, blank=True, null=True)
+    prd = models.ForeignKey(Producto, models.DO_NOTHING, blank=True, null=True)
+    costobr = models.DecimalField(max_digits=10, decimal_places=2)
+    flete = models.DecimalField(max_digits=10, decimal_places=2)
+    iva = models.DecimalField(max_digits=10, decimal_places=2)
+    igtf = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'pedidoprooveedor'
