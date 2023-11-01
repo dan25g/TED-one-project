@@ -126,6 +126,7 @@ class Prodcompra(models.Model):
 class Devolucion(models.Model):
     devid = models.AutoField(primary_key=True)
     razondev = models.CharField(blank=True, null=True)
+    fecdev = models.DateField()
     prcmp = models.ForeignKey(Prodcompra, models.DO_NOTHING, db_column='prcmp', blank=True, null=True)
 
     class Meta:
