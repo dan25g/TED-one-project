@@ -147,7 +147,7 @@ class Pago(models.Model):
     pago_id = models.AutoField(primary_key=True)
     formapago = models.CharField(blank=True, null=True)
     pago_monto = models.DecimalField(max_digits=12, decimal_places=2, blank=True, null=True)
-    fk_compra = models.ForeignKey(Compra, models.DO_NOTHING, db_column='fk_compra')
+    fk_compra = models.ForeignKey(Compra, models.DO_NOTHING)
 
     class Meta:
         managed = False
@@ -170,6 +170,7 @@ class Stocktienda(models.Model):
     prod = models.ForeignKey(Producto, models.DO_NOTHING, blank=True, null=True)
     fechavencido = models.DateField()
     cantidad = models.IntegerField()
+    sucur = models.ForeignKey(Sucursal, models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False
