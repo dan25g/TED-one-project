@@ -17,9 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from base import views
+from base.views import exportRp1,exportRp2,exportRp3,exportRp4
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.Home,name='home'),
-    path('report/', include(('report.urls', 'report')))
+    path('report/', include(('report.urls', 'report'))),
+    path('export_reporte_1/', exportRp1, name='export_reporte1'),
+    path('export_reporte_2/', exportRp2, name='export_reporte2'),
+    path('export_reporte_3/', exportRp3, name='export_reporte3'),
+    path('export_reporte_4/', exportRp4, name='export_reporte4')
 ]
