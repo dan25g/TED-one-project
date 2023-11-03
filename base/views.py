@@ -208,5 +208,5 @@ def exportRp8(request):
         #    
     #for i in data.items():print(i)
 
-    return report(request, 'rp4', data3)
+    return report(request, 'rp8', data3)
 
